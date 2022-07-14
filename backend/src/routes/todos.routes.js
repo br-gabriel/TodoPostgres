@@ -1,12 +1,20 @@
 const express = require("express");
+const { PrismaClient } = require("@prisma/client");
 
 const allTodos = [{ name: "Teste", status: false }];
 const todosRoutes = express.Router();
 
-todosRoutes.post("/todos", (req, res) => {
+const prisma = new PrismaClient();
+
+todosRoutes.post("/todos", async (req, res) => {
     const { name } = req.body;
-    allTodos.push({ name, status: false });
-    return res.status(201).json(allTodos);
+    const todo = await prisma.todo.create({
+        data: {
+            name,
+        },
+    });
+    //allTodos.push({ name, status: false });
+    return res.status(201).json(todo);
 })
 
 todosRoutes.get("/todos", (req, res) => {
@@ -18,7 +26,7 @@ todosRoutes.patch("/todos", (req, res) => {
 })
 
 todosRoutes.delete("/todos", (req, res) => {
-    
+
 })
 
 module.exports = todosRoutes
