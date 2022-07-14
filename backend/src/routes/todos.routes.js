@@ -1,7 +1,7 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 
-const allTodos = [{ name: "Teste", status: false }];
+//const allTodos = [{ name: "Teste", status: false }];
 const todosRoutes = express.Router();
 
 const prisma = new PrismaClient();
