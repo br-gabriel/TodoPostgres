@@ -9,4 +9,16 @@ todosRoutes.post("/todos", (req, res) => {
     return res.status(201).json(allTodos);
 })
 
+todosRoutes.get("/todos", (req, res) => {
+    return res.status(200).json(allTodos);
+})
+
+todosRoutes.patch("/todos", (req, res) => {
+
+})
+
+todosRoutes.delete("/todos", (req, res) => {
+    
+})
+
 module.exports = todosRoutes
