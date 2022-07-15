@@ -17,7 +17,8 @@ todosRoutes.post("/todos", async (req, res) => {
     return res.status(201).json(todo);
 })
 
-todosRoutes.get("/todos", (req, res) => {
+todosRoutes.get("/todos", async (req, res) => {
+    const allTodos = await prisma.todo.findMany()
     return res.status(200).json(allTodos);
 })
 
