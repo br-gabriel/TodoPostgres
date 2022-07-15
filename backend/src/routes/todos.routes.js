@@ -1,5 +1,6 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
+const { response } = require("express");
 
 //const allTodos = [{ name: "Teste", status: false }];
 const todosRoutes = express.Router();
@@ -15,19 +16,58 @@ todosRoutes.post("/todos", async (req, res) => {
     });
     //allTodos.push({ name, status: false });
     return res.status(201).json(todo);
-})
+});
 
 todosRoutes.get("/todos", async (req, res) => {
-    const allTodos = await prisma.todo.findMany()
+    const allTodos = await prisma.todo.findMany();
     return res.status(200).json(allTodos);
-})
+});
 
-todosRoutes.patch("/todos", (req, res) => {
+todosRoutes.put("/todos", async (req, res) => {
+    const { name, id, status } = req.body;
+    
+    if(!id) {
+        return res.status(400).json("Id is mandatory");
+    }
 
-})
+    const todoAlreadyExists = await prisma.todo.findUnique({
+         where: {id}
+    });
 
-todosRoutes.delete("/todos", (req, res) => {
+    if(!todoAlreadyExists) {
+        return res.status(404).json("Todo not exists");
+    };
 
+    const todo = await prisma.todo.update({
+        where: {
+            id,
+        },
+        data: {
+            name,
+            status,
+        },
+    });
+    return res.status(200).json(todo);
+});
+
+todosRoutes.delete("/todos/:id", async (req, res) => {
+    const { id } = req.params;
+    const intID = parseInt(id);
+    
+    if(!intID) {
+        return res.status(400).json("Id is mandatory")
+    }
+
+    const todoAlreadyExists = await prisma.todo.findUnique({
+         where: { id: intID }, 
+    });
+
+    if(!todoAlreadyExists) {
+        return res.status(404).json("Todo not exists");
+    };
+
+    await prisma.todo.delete({ where: { id: intID } });
+    return res.status(200).send();
 })
 
 module.exports = todosRoutes
