@@ -14,9 +14,11 @@ const arrayTodos = [
 export function Main() {
     async function getTodos() {
         const response = await axios.get("http://localhost:3333/todos")
+        setTodos(response.data);
     }
 
     const [todos, setTodos] = useState([]);
+
     useEffect(() => {
         getTodos();
     }, [])
@@ -24,7 +26,7 @@ export function Main() {
     return (
         <Container>
             <TodoListHeader/>
-            <TodoList todos={arrayTodos}/>
+            <TodoList todos={todos}/>
         </Container>
     );
 };
