@@ -1,5 +1,5 @@
 import { TodoListHeader } from "../TodoListHeader"
-import TodoList from "../TodoList"
+import { TodoList } from "../TodoList"
 import { Container } from "./styles"
 import { useEffect, useState } from "react"
 import axios from "axios"
@@ -14,6 +14,7 @@ const arrayTodos = [
 export function Main() {
     async function getTodos() {
         const response = await axios.get("http://localhost:3333/todos")
+        console.log(response.data)
         setTodos(response.data);
     }
 
@@ -21,7 +22,7 @@ export function Main() {
 
     useEffect(() => {
         getTodos();
-    }, [])
+    }, []);
 
     return (
         <Container>

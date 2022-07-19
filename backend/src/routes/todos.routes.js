@@ -1,8 +1,6 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
-const { response } = require("express");
 
-//const allTodos = [{ name: "Teste", status: false }];
 const todosRoutes = express.Router();
 
 const prisma = new PrismaClient();
@@ -14,12 +12,15 @@ todosRoutes.post("/todos", async (req, res) => {
             name,
         },
     });
-    //allTodos.push({ name, status: false });
+
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     return res.status(201).json(todo);
 });
 
 todosRoutes.get("/todos", async (req, res) => {
     const allTodos = await prisma.todo.findMany();
+
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     return res.status(200).json(allTodos);
 });
 
@@ -47,6 +48,8 @@ todosRoutes.put("/todos", async (req, res) => {
             status,
         },
     });
+
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     return res.status(200).json(todo);
 });
 
@@ -67,6 +70,8 @@ todosRoutes.delete("/todos/:id", async (req, res) => {
     };
 
     await prisma.todo.delete({ where: { id: intID } });
+
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     return res.status(200).send();
 })
 
