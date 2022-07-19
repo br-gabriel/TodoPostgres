@@ -1,45 +1,27 @@
-import {  } from "./styles"
+import { Todo } from "./styles"
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai"
-/*
-const TodoList = ({todos}) => {
-    return (
-        <div>
-            {todos.map((todo) => {
-                return (
-                    <div>
-                        <input type={"checkbox"}></input>
-                        <p>{todo.name}</p>
-                        <button>
-                            <AiOutlineEdit size={20} color={"#000"}/>
-                        </button>
-                        <button>
-                            <AiOutlineDelete size={20} color={"#000"} />
-                        </button>
-                    </div>
-                );
-            })}
-        </div>
-    );
-};
-
-export default TodoList;
-*/
 
 export function TodoList({todos}) {
     return (
         <div>
             {todos.map((todo) => {
                 return (
-                    <div>
-                        <input type={"checkbox"}></input>
-                        <p>{todo.name}</p>
-                        <button>
-                            <AiOutlineEdit size={20} color={"#000"}/>
-                        </button>
-                        <button>
-                            <AiOutlineDelete size={20} color={"#000"} />
-                        </button>
-                    </div>
+                    <Todo>
+                        <div>
+                            <input type={"checkbox"}></input>
+                            <p>{todo.name}</p>
+                        </div>
+
+                        <section>
+                            <button>
+                                <AiOutlineEdit size={20} color={"#000"}/>
+                            </button>
+                            <button>
+                                <AiOutlineDelete size={20} color={"#E52E4D"} />
+                            </button>
+                        </section>
+                        
+                    </Todo>
                 );
             })}
         </div>
