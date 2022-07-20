@@ -2,7 +2,6 @@ const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 
 const todosRoutes = express.Router();
-
 const prisma = new PrismaClient();
 
 todosRoutes.post("/todos", async (req, res) => {
@@ -13,14 +12,12 @@ todosRoutes.post("/todos", async (req, res) => {
         },
     });
 
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     return res.status(201).json(todo);
 });
 
 todosRoutes.get("/todos", async (req, res) => {
     const allTodos = await prisma.todo.findMany();
 
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     return res.status(200).json(allTodos);
 });
 
@@ -29,7 +26,7 @@ todosRoutes.put("/todos", async (req, res) => {
     
     if(!id) {
         return res.status(400).json("Id is mandatory");
-    }
+    };
 
     const todoAlreadyExists = await prisma.todo.findUnique({
          where: {id}
@@ -49,7 +46,6 @@ todosRoutes.put("/todos", async (req, res) => {
         },
     });
 
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     return res.status(200).json(todo);
 });
 
@@ -59,7 +55,7 @@ todosRoutes.delete("/todos/:id", async (req, res) => {
     
     if(!intID) {
         return res.status(400).json("Id is mandatory")
-    }
+    };
 
     const todoAlreadyExists = await prisma.todo.findUnique({
          where: { id: intID }, 
@@ -71,8 +67,7 @@ todosRoutes.delete("/todos/:id", async (req, res) => {
 
     await prisma.todo.delete({ where: { id: intID } });
 
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     return res.status(200).send();
 })
 
-module.exports = todosRoutes
+module.exports = todosRoutes;

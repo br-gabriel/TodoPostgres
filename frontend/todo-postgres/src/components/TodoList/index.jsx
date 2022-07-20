@@ -6,7 +6,7 @@ export function TodoList({todos}) {
         <div>
             {todos.map((todo) => {
                 return (
-                    <Todo>
+                    <Todo key={todo.id}>
                         <div>
                             <input type={"checkbox"}></input>
                             <p>{todo.name}</p>

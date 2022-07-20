@@ -6,8 +6,7 @@ import axios from "axios"
 
 export function Main() {
     async function getTodos() {
-        const response = await axios.get("http://localhost:3333/todos")
-        console.log(response.data)
+        const response = await axios.get("http://localhost:3232/todos")
         setTodos(response.data);
     }
 
@@ -16,6 +15,8 @@ export function Main() {
     useEffect(() => {
         getTodos();
     }, []);
+
+    //useEffect(() => { getTodos(); }, [TaskUpdateEmitter]);
 
     return (
         <Container>
