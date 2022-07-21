@@ -4,11 +4,11 @@ import axios from "axios";
 
 export function TodoList({todos}) {
     async function deleteTodo(todo) {
-        const response = await axios.delete(`http://localhost:3232/todos/${todo.id}`)
+        await axios.delete(`http://localhost:3232/todos/${todo.id}`)
     }
 
     async function handleStatusChange(todo) {
-        const response = await axios.put("http://localhost:3232/todos", {
+        await axios.put("http://localhost:3232/todos", {
             id: todo.id,
             status: !todo.status
         })
@@ -25,7 +25,7 @@ export function TodoList({todos}) {
                         </div>
 
                         <section>
-                            <button>
+                            <button className="editButton">
                                 <AiOutlineEdit size={20} color={"#000"}/>
                             </button>
                             <button onClick={() => deleteTodo(todo)}>

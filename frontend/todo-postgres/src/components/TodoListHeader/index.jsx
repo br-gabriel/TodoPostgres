@@ -11,7 +11,7 @@ export function TodoListHeader() {
     }*/
     
     async function createTodo() {
-        const response = await axios.post("http://localhost:3232/todos", {
+        await axios.post("http://localhost:3232/todos", {
             name: inputValue,
         });
         //enviar a atualização para o taskUpdateEmitter

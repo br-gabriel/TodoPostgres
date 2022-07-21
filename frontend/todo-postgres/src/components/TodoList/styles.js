@@ -35,4 +35,8 @@ export const Todo = styled.div `
     button:hover {
         filter: brightness(0.5)
     }
+
+    .editButton:hover {
+        filter: invert(0.5);
+    }
 `
