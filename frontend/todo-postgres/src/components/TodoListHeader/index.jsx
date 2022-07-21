@@ -6,16 +6,15 @@ import axios from "axios"
 export function TodoListHeader() {
     const [inputValue, setInputValue] = useState("")
 
-    /*async function sendNewTodo() {
-        const response = await axios.get("http://localhost:3333/todos")
+    /*async function TaskUpdateEmitter() {
+        
     }*/
     
-    async function CreateTodo() {
+    async function createTodo() {
         const response = await axios.post("http://localhost:3232/todos", {
             name: inputValue,
         });
-
-        console.log(response);
+        //enviar a atualização para o taskUpdateEmitter
         setInputValue("");
     }
 
@@ -33,7 +32,7 @@ export function TodoListHeader() {
                     placeholder="Adicionar tarefa"
                 ></input>
 
-                <button onClick={CreateTodo}>
+                <button onClick={createTodo}>
                     <AiOutlineSend size={25} color={"#fff"}/>
                 </button>
             </div>
