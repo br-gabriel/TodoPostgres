@@ -8,7 +8,6 @@ export const Todo = styled.div `
     justify-content: space-between;
     align-items: center;
     
-    
     div {
         display: flex;
         flex-direction: row;
@@ -16,6 +15,10 @@ export const Todo = styled.div `
         padding: 1rem 3.3rem;
 
         max-width: 800px;
+    }
+
+    div label {
+        font-size: 1.08rem;
     }
 
     div input {
@@ -38,5 +41,33 @@ export const Todo = styled.div `
 
     .editButton:hover {
         filter: invert(0.5);
+    }
+
+    /*button.checkbox {
+        background-color: var(--text-body);
+        min-width: 1rem;
+        min-height: 1rem;
+        border-radius: .2rem;
+    }*/
+
+    .custom-checkbox input{
+        display: none;
+    }
+
+    .custom-checkbox input + label:before {
+        content: "";
+        min-width: 1.1rem;
+        min-height: 1.1rem;
+        border-radius: .2rem;
+        display: inline-block;
+        background-color: var(--text-body);
+        vertical-align: middle;
+        margin-right: 1rem;
+        margin-bottom: .25rem;
+    }
+
+    .custom-checkbox input:checked + label:before {
+        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 10 10'%3E%3Cg class='nc-icon-wrapper' stroke-width='1' fill='%23555555'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' data-cap='butt' d='M2.83 4.72l1.58 1.58 2.83-2.83'/%3E%3C/g%3E%3C/svg%3E");
+        background-position: center;
     }
 `

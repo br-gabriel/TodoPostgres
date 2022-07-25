@@ -17,7 +17,6 @@ export function TodoList() {
             id: todo.id,
             status: !todo.status
         })
-        getTodos();
     }
     
     return (
@@ -25,9 +24,9 @@ export function TodoList() {
             {todos.map((todo) => {
                 return (
                     <Todo key={todo.id}>
-                        <div>
-                            <input  onClick={() => handleStatusChange(todo)} type={"checkbox"}></input>
-                            <p>{todo.name}</p>
+                        <div className="custom-checkbox">
+                            <input id={todo.id} type={"checkbox"} onClick={() => handleStatusChange(todo)}></input>
+                            <label for={todo.id}>{todo.name}</label>
                         </div>
 
                         <section>
