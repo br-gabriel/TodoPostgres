@@ -1,20 +1,18 @@
 import { MainHeader } from "./styles"
 import { AiOutlineSend } from "react-icons/ai"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { GetContext } from "../../contexts/getContext"
 import axios from "axios"
 
 export function TodoListHeader() {
+    const {getTodos} = useContext(GetContext)
     const [inputValue, setInputValue] = useState("")
-
-    /*async function TaskUpdateEmitter() {
-        
-    }*/
     
     async function createTodo() {
         await axios.post("http://localhost:3232/todos", {
             name: inputValue,
         });
-        //enviar a atualização para o taskUpdateEmitter
+        getTodos();
         setInputValue("");
     }
 

@@ -6,5 +6,7 @@ export const Container = styled.main `
     background-color: var(--shape);
     border-radius: 1rem;
 
+    padding-bottom: 2.5rem;
+
     box-shadow: 4px 4px 8px rgba(39, 63, 172, 0.33);
 `

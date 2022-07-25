@@ -1,10 +1,15 @@
 import { Todo } from "./styles"
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai"
+import { useContext } from "react";
+import { GetContext } from "../../contexts/getContext";
 import axios from "axios";
 
-export function TodoList({todos}) {
+export function TodoList() {
+    const {getTodos, todos} = useContext(GetContext)
+
     async function deleteTodo(todo) {
-        await axios.delete(`http://localhost:3232/todos/${todo.id}`)
+        await axios.delete(`http://localhost:3232/todos/${todo.id}`);
+        getTodos();
     }
 
     async function handleStatusChange(todo) {
@@ -12,6 +17,7 @@ export function TodoList({todos}) {
             id: todo.id,
             status: !todo.status
         })
+        getTodos();
     }
     
     return (

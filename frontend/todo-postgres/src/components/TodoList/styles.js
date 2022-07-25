@@ -7,8 +7,8 @@ export const Todo = styled.div `
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-
+    
+    
     div {
         display: flex;
         flex-direction: row;
