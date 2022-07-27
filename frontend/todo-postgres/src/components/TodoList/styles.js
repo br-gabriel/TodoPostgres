@@ -33,22 +33,15 @@ export const Todo = styled.div `
         border: none;
         background-color: transparent;
         margin-right: 1.5rem;
-    }
 
-    button:hover {
-        filter: brightness(0.5)
+        &:hover {
+            filter: brightness(0.5)
+        }
     }
 
     .editButton:hover {
         filter: invert(0.5);
     }
-
-    /*button.checkbox {
-        background-color: var(--text-body);
-        min-width: 1rem;
-        min-height: 1rem;
-        border-radius: .2rem;
-    }*/
 
     .custom-checkbox input{
         display: none;
