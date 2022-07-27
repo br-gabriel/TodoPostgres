@@ -64,4 +64,8 @@ export const Todo = styled.div `
         background-position: center;
         background-color: var(--blue);
     }
+
+    .custom-checkbox input:checked + label {
+        text-decoration: line-through;
+    }
 `
