@@ -69,4 +69,10 @@ export const Todo = styled.div `
     .custom-checkbox input:checked + label {
         text-decoration: line-through;
     }
+
+    label:hover {
+        cursor: pointer;
+        filter: brightness(0.8);
+        transition: filter .2s;
+    }
 `
