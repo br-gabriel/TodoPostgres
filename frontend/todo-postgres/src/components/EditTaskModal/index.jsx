@@ -11,6 +11,12 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected }) {
     const [newTodoValue, setNewTodoValue] = useState("");
 
     async function updateTask() {
+        const filteredInput = newTodoValue.trim();
+        
+        if(filteredInput === "") {
+            return;
+        }
+
         await axios.put("http://localhost:3232/todos", {
             id: todoSelected.id,
             name: newTodoValue

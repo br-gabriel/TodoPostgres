@@ -9,6 +9,12 @@ export function TodoListHeader() {
     const [inputValue, setInputValue] = useState("");
     
     async function createTodo() {
+        const filteredInput = inputValue.trim();
+        
+        if(filteredInput === "") {
+            return;
+        }
+        
         await axios.post("http://localhost:3232/todos", {
             name: inputValue,
         });
