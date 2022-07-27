@@ -20,6 +20,7 @@ export function TodoList() {
             id: todo.id,
             status: !todo.status
         });
+        getTodos();
     };
 
     async function todoSelected(todo) {
@@ -40,7 +41,7 @@ export function TodoList() {
                 return (
                     <Todo key={todo.id}>
                         <div className="custom-checkbox">
-                            <input id={todo.id} type={"checkbox"} onClick={() => handleStatusChange(todo)}></input>
+                            <input id={todo.id} type={"checkbox"} checked={todo.status === true ? "checked" : ""} onClick={() => handleStatusChange(todo)}></input>
                             <label for={todo.id}>{todo.name}</label>
                         </div>
 
