@@ -1,9 +1,25 @@
 import Modal from "react-modal";
+import { useState, useContext } from "react";
+import { GetContext } from "../../contexts/getContext";
 import { Container } from "./styles";
+import axios from "axios";
 
 Modal.setAppElement("#root");
 
-export function EditTaskModal({ isOpen, onRequestClose }) {
+export function EditTaskModal({ isOpen, onRequestClose, todoSelected }) {
+    const { getTodos } = useContext(GetContext);
+    const [newTodoValue, setNewTodoValue] = useState("");
+
+    async function updateTask() {
+        await axios.put("http://localhost:3232/todos", {
+            id: todoSelected.id,
+            name: newTodoValue
+        });
+
+        setNewTodoValue("");
+        getTodos();
+    }
+
     return (
         <Modal 
             isOpen={isOpen} 
@@ -13,12 +29,12 @@ export function EditTaskModal({ isOpen, onRequestClose }) {
         >            
             <Container>
                 <h2>Editar tarefa</h2>
-                <input type="text"/>
+                <input type="text" defaultValue={todoSelected.name} onChange={event => setNewTodoValue(event.target.value)}/>
                 <div>
                     <button className="cancelButton" onClick={onRequestClose}>
                         Cancelar
                     </button>
-                    <button type="submit" className="updateButton">
+                    <button className="updateButton" onClick={updateTask}>
                         Salvar
                     </button> 
                 </div>

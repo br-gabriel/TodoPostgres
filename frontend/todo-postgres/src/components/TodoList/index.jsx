@@ -8,6 +8,7 @@ import axios from "axios";
 export function TodoList() {
     const {getTodos, todos} = useContext(GetContext);
     const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
+    const [selectedTodo, setSelectedTodo] = useState();
 
     async function deleteTodo(todo) {
         await axios.delete(`http://localhost:3232/todos/${todo.id}`);
@@ -20,6 +21,10 @@ export function TodoList() {
             status: !todo.status
         });
     };
+
+    async function todoSelected(todo) {
+        await setSelectedTodo(todo)
+    }
 
     function handleOpenEditTaskModal() {
         setIsEditTaskModalOpen(true);
@@ -40,7 +45,7 @@ export function TodoList() {
                         </div>
 
                         <section>
-                            <button className="editButton" onClick={handleOpenEditTaskModal}>
+                            <button className="editButton" onClick={() => { handleOpenEditTaskModal(); todoSelected(todo); }}>
                                 <AiOutlineEdit size={20} color={"#000"}/>
                             </button>
                             <button onClick={() => deleteTodo(todo)}>
@@ -55,6 +60,7 @@ export function TodoList() {
             <EditTaskModal 
                 isOpen={isEditTaskModalOpen}
                 onRequestClose={handleCloseEditTaskModal}
+                todoSelected={selectedTodo}
             />
         </div>
     );
