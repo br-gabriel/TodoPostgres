@@ -1,4 +1,4 @@
-import { Container, Content } from "./styles"
+import { Container, Content } from "./styles";
 
 export function Header() {
     return (
@@ -7,5 +7,5 @@ export function Header() {
                 <p>to<strong>.do</strong></p>
             </Content>
         </Container>
-    )
-}
+    );
+};

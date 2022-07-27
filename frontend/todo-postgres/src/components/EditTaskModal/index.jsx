@@ -18,7 +18,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected }) {
 
         setNewTodoValue("");
         getTodos();
-    }
+    };
 
     return (
         <Modal 
@@ -29,7 +29,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected }) {
         >            
             <Container>
                 <h2>Editar tarefa</h2>
-                <input type="text" defaultValue={todoSelected.name} onChange={event => setNewTodoValue(event.target.value)}/>
+                <input type="text" onChange={event => setNewTodoValue(event.target.value)}/>
                 <div>
                     <button className="cancelButton" onClick={onRequestClose}>
                         Cancelar
@@ -40,5 +40,5 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected }) {
                 </div>
             </Container>
         </Modal>
-    )
-}
+    );
+};

@@ -15,28 +15,29 @@ export const Todo = styled.div `
         padding: 1rem 3.3rem;
 
         max-width: 800px;
-    }
 
-    div label {
-        font-size: 1.08rem;
-    }
+        label {
+            font-size: 1.08rem;
+        }
 
-    div input {
-        margin-right: 1rem;
+        input {
+            margin-right: 1rem;
+        }
     }
 
     section {
         margin-right: 1.7rem;
-    }
 
-    button {
-        border: none;
-        background-color: transparent;
-        margin-right: 1.5rem;
+        button {
+            border: none;
+            background-color: transparent;
+            margin-right: 1.5rem;
 
-        &:hover {
-            filter: brightness(0.5)
+            &:hover {
+                filter: brightness(0.5)
+            }
         }
+
     }
 
     .editButton:hover {

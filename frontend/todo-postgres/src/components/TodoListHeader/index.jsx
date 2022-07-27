@@ -1,12 +1,12 @@
-import { MainHeader } from "./styles"
-import { AiOutlineSend } from "react-icons/ai"
-import { useState, useContext } from "react"
-import { GetContext } from "../../contexts/getContext"
-import axios from "axios"
+import { MainHeader } from "./styles";
+import { AiOutlineSend } from "react-icons/ai";
+import { useState, useContext } from "react";
+import { GetContext } from "../../contexts/getContext";
+import axios from "axios";
 
 export function TodoListHeader() {
-    const {getTodos} = useContext(GetContext)
-    const [inputValue, setInputValue] = useState("")
+    const {getTodos} = useContext(GetContext);
+    const [inputValue, setInputValue] = useState("");
     
     async function createTodo() {
         await axios.post("http://localhost:3232/todos", {
@@ -14,7 +14,7 @@ export function TodoListHeader() {
         });
         getTodos();
         setInputValue("");
-    }
+    };
 
     return (
         <MainHeader>

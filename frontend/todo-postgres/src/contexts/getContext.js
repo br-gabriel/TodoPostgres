@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const GetContext = createContext();
 
@@ -10,7 +10,7 @@ export function GetContextProvider({children}) {
     async function getTodos() {
         const response = await axios.get("http://localhost:3232/todos")
         setTodos(response.data);
-    }    
+    };
 
     useEffect(() => {
         getTodos();
@@ -21,4 +21,4 @@ export function GetContextProvider({children}) {
             {children}    
         </GetContext.Provider>
     )
-}
+};

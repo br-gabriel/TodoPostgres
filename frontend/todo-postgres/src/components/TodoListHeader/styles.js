@@ -46,11 +46,11 @@ export const MainHeader = styled.div `
             display: flex;
             justify-content: center;
             align-items: center;
-        }
 
-        button:hover {
-            background-color: #32991c;
-            transition: .2s;
+            &:hover {
+                background-color: #32991c;
+                transition: .2s;
+            }
         }
     }
     

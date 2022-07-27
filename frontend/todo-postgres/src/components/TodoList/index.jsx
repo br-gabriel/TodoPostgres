@@ -23,8 +23,8 @@ export function TodoList() {
     };
 
     async function todoSelected(todo) {
-        await setSelectedTodo(todo)
-    }
+        await setSelectedTodo(todo);
+    };
 
     function handleOpenEditTaskModal() {
         setIsEditTaskModalOpen(true);
@@ -64,4 +64,4 @@ export function TodoList() {
             />
         </div>
     );
-}
+};
