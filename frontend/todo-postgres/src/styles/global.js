@@ -39,6 +39,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         background: var(--background);
+        min-height: 100vh;
     }
 
     button {

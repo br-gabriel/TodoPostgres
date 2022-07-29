@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main `
     max-width: 1120px;
-    margin: -10rem auto;
+    margin: -10rem auto 4rem;
     background-color: var(--shape);
     border-radius: 1rem;
 
