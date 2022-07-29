@@ -6,7 +6,7 @@ import axios from "axios";
 
 Modal.setAppElement("#root");
 
-export function EditTaskModal({ isOpen, onRequestClose, todoSelected }) {
+export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }) {
     const { getTodos } = useContext(GetContext);
     const [newTodoValue, setNewTodoValue] = useState("");
 
@@ -35,7 +35,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected }) {
         >            
             <Container>
                 <h2>Editar tarefa</h2>
-                <input type="text" onChange={event => setNewTodoValue(event.target.value)}/>
+                <input type="text" defaultValue={OldTitle} onChange={event => setNewTodoValue(event.target.value)}/>
                 <div>
                     <button className="cancelButton" onClick={onRequestClose}>
                         Cancelar
