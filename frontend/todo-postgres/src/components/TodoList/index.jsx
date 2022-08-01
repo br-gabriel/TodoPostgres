@@ -38,7 +38,6 @@ export function TodoList() {
 
     async function setOldTitle(todo) {
         await setOldTaskTitle(todo.name);
-        console.log(oldTaskTitle)
     };
     
     return (
@@ -47,7 +46,7 @@ export function TodoList() {
                 return (
                     <Todo key={todo.id}>
                         <div className="custom-checkbox">
-                            <input id={todo.id} type={"checkbox"} checked={todo.status === true ? "checked" : ""} onClick={() => handleStatusChange(todo)}></input>
+                            <input id={todo.id} type={"checkbox"} readOnly checked={todo.status === true ? "checked" : ""} onClick={() => handleStatusChange(todo)}></input>
                             <label for={todo.id}>{todo.name}</label>
                         </div>
 
