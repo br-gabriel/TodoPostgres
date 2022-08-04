@@ -1,7 +1,7 @@
 import { Todo } from "./styles";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useContext, useState } from "react";
-import { GetContext } from "../../contexts/getContext";
+import { GetContext } from "../../../contexts/getContext";
 import { EditTaskModal } from "../EditTaskModal";
 import axios from "axios";
 

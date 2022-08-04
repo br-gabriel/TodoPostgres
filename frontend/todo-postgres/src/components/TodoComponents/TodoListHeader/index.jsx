@@ -1,7 +1,7 @@
 import { MainHeader } from "./styles";
 import { AiOutlineSend } from "react-icons/ai";
 import { useState, useContext } from "react";
-import { GetContext } from "../../contexts/getContext";
+import { GetContext } from "../../../contexts/getContext";
 import axios from "axios";
 
 export function TodoListHeader() {

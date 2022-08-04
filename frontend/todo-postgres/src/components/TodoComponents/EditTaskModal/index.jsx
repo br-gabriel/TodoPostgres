@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import { useState, useContext } from "react";
-import { GetContext } from "../../contexts/getContext";
+import { GetContext } from "../../../contexts/getContext";
 import { Container } from "./styles";
 import axios from "axios";
 
