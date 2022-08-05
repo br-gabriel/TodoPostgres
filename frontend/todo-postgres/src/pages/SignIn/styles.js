@@ -5,38 +5,56 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
+    gap: .8rem;
     height: 100vh;
+
+    p {
+        color: var(--blue);
+        font-size: 2rem;
+        font-weight: 400;
+    }
 `;
 
 export const Content = styled.div`
-    gap: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 1rem;
+
     width: 100%;
-    box-shadow: 0 1px 2px #0003;
-    background-color: white;
     max-width: 350px;
-    padding: 20px;
-    border-radius: 5px;
+
+    background-color: white;
+    box-shadow: 4px 4px 8px rgba(39, 63, 172, 0.33);
+    
+    padding: 1.2rem;
+    border-radius: .5rem;
+
+    div {
+        width: 100%;
+        padding-left: 0.3rem;
+        margin-bottom: 0.3rem;
+        Label {
+            text-align: left;
+        }
+    }
 `;
 
 export const Label = styled.label`
-    font-size: 18px;
+    font-size: 1.15rem;
     font-weight: 600;
-    color: #676767;
+    color: var(--text-title);
 `;
 
 export const LabelSignUp = styled.label`
-    font-size: 16px;
-    color: #676767;
+    font-size: 1.05rem;
+    color: var(--text-title);
 `;
 
 export const LabelError = styled.label`
-    font-size: 14px;
-    color: red;
+    font-size: 1rem;
+    color: var(--red);
 `;
 
 export const Strong = styled.strong`
@@ -44,6 +62,11 @@ export const Strong = styled.strong`
 
     a {
         text-decoration: none;
-        color: #676767;
+        color: var(--text-title);
+
+        &:hover {
+            filter: brightness(1.9);
+            transition: all .2s;
+        }
     }
 `;

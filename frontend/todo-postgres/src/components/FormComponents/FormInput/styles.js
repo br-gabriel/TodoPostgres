@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Input = styled.input`
     outline: none;
-    padding: 16px 20px;
+    padding: 1.1rem 1.2rem;
     width: 100%;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: .5rem;
+    font-size: 1.1rem;
 
-    background-color: #f0f2f5;
+    background-color: var(--input-background);
     border: none;
 `;

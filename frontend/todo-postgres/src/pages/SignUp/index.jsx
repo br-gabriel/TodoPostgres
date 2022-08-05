@@ -12,8 +12,13 @@ export function SignUp() {
     
     return (
         <Container>
-            <Label>Sistema de cadastro</Label>
+            <p>to<strong>.do</strong></p>
+            
             <Content>
+                <div>
+                    <Label>Crie sua conta</Label>
+                </div>
+                
                 <FormInput 
                     type="email"
                     placeholder="Digite seu e-mail"
@@ -37,7 +42,7 @@ export function SignUp() {
 
                 <LabelError>{error}</LabelError>
 
-                <FormButton Text="Inscreva-se" onClick={console.log("handleSignUp")}/>
+                <FormButton Text="Cadastre-se" onClick={console.log("handleSignUp")}/>
 
                 <LabelSignIn>
                     Já tem uma conta?

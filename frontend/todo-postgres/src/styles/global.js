@@ -4,13 +4,12 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         --background: #F3F5FB;
         --blue: #273FAC;
-        --text-title: #303134;
-        --text-body: #969CB3;
-        --shape: #ffffff;
         --red: #E52E4D;
         --green: #3FAD27;
+        --text-title: #303134;
+        --text-body: #969CB3;
         --gray-divisor: #BBC4E7;
-        --input-background: #EBEBEB; 
+        --input-background: #f0f2f5; 
     }
 
     * {
@@ -69,7 +68,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         max-width: 576px;
 
-        background-color: var(--shape);
+        background-color: white;
         padding: 2rem;
         position: relative;
         border-radius: 1rem;

@@ -12,7 +12,7 @@ export const Content = styled.div `
     margin: 0 auto;
     padding: 2rem 1rem 12rem;
     
-    color: var(--shape);
+    color: white;
     font-size: 2.2rem;
 
     display: flex;

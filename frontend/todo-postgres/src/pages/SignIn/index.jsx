@@ -10,32 +10,39 @@ export function SignIn() {
     const [error, setError] = useState("");
     
     return (
-        <>
-            <Container>
-                <Label>SISTEMA DE LOGIN</Label>
-                <Content>
-                    <FormInput
-                        type="email"
-                        placeholder="Digite seu e-mail"
-                        value={email}
-                        onChange={(e) => [setEmail(e.target.value), setError("")]}
-                    />
-                    <FormInput
-                        type="password"
-                        placeholder="Digite sua senha"
-                        value={password}
-                        onChange={(e) => [setPassword(e.target.value), setError("")]}
-                    />
-                    <LabelError>{error}</LabelError>
-                    <FormButton Text="Entrar" onClick={console.log("teste")} />
-                    <LabelSignUp>
-                        Não tem uma conta?
-                        <Strong>
-                            <Link to="/signup">&nbsp;Registre-se</Link>
-                        </Strong>
-                    </LabelSignUp>
-                </Content>
-            </Container>
-        </>
+        <Container>
+            <p>to<strong>.do</strong></p>
+            
+            <Content>
+                <div>
+                    <Label>Entre na sua conta</Label>
+                </div>
+
+                <FormInput
+                    type="email"
+                    placeholder="Digite seu e-mail"
+                    value={email}
+                    onChange={(e) => [setEmail(e.target.value), setError("")]}
+                />
+
+                <FormInput
+                    type="password"
+                    placeholder="Digite sua senha"
+                    value={password}
+                    onChange={(e) => [setPassword(e.target.value), setError("")]}
+                />
+
+                <LabelError>{error}</LabelError>
+
+                <FormButton Text="Entrar" onClick={console.log("teste")} />
+                
+                <LabelSignUp>
+                    Não tem uma conta?
+                    <Strong>
+                        <Link to="/signup">&nbsp;Registre-se</Link>
+                    </Strong>
+                </LabelSignUp>
+            </Content>
+        </Container>
     );
 };
