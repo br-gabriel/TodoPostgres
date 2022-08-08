@@ -5,6 +5,7 @@ import { Container, Content, Label, LabelError, LabelSignIn, Strong } from "./st
 import { Link, useNavigate } from "react-router-dom";
 
 export function SignUp() {
+    const [firstName, setFirstName] = useState("");
     const [email, setEmail] = useState("");
     const [emailConf, setEmailConf] = useState("");
     const [password, setPassword] = useState("");
@@ -23,21 +24,21 @@ export function SignUp() {
                     type="email"
                     placeholder="Digite seu e-mail"
                     value={email}
-                    onChange={(e) => [setEmail(e.target.value), setError("")]}
+                    onChange={(event) => [setEmail(event.target.value), setError("")]}
                 />
 
                 <FormInput 
                     type="email"
                     placeholder="Confirme seu e-mail"
                     value={emailConf}
-                    onChange={(e) => [setEmailConf(e.target.value), setError("")]}
+                    onChange={(event) => [setEmailConf(event.target.value), setError("")]}
                 />
 
                 <FormInput 
                     type="password"
                     placeholder="Digite sua senha"
                     value={password}
-                    onChange={(e) => [setPassword(e.target.value), setError("")]}
+                    onChange={(event) => [setPassword(event.target.value), setError("")]}
                 />
 
                 <LabelError>{error}</LabelError>

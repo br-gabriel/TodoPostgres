@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Content, Label, Input, LabelError, LabelSignUp, Strong } from "./styles";
+import { Container, Content, Label, LabelError, LabelSignUp, Strong } from "./styles";
 import { FormInput } from "../../components/FormComponents/FormInput";
 import { FormButton } from "../../components/FormComponents/FormButton";
 import { Link, useNavigate } from "react-router-dom";
@@ -22,14 +22,14 @@ export function SignIn() {
                     type="email"
                     placeholder="Digite seu e-mail"
                     value={email}
-                    onChange={(e) => [setEmail(e.target.value), setError("")]}
+                    onChange={(event) => [setEmail(event.target.value), setError("")]}
                 />
 
                 <FormInput
                     type="password"
                     placeholder="Digite sua senha"
                     value={password}
-                    onChange={(e) => [setPassword(e.target.value), setError("")]}
+                    onChange={(event) => [setPassword(event.target.value), setError("")]}
                 />
 
                 <LabelError>{error}</LabelError>
