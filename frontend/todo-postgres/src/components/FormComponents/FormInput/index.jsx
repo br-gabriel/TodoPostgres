@@ -8,6 +8,7 @@ export function FormInput({ type, placeholder, value, onChange }) {
             onChange={onChange}
             type={type}
             placeholder={placeholder}
+            required
         />
     );
 };

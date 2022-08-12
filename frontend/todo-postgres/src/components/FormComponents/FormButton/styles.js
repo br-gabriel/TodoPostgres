@@ -11,4 +11,9 @@ export const Button = styled.button `
     font-weight: 600;
     font-size: 1.1rem;
     max-width: 350px;
+
+    &:hover {
+        filter: brightness(0.9);
+        transition: .2s;
+    }
 `;

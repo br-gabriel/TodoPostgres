@@ -17,9 +17,9 @@ export function RoutesApp() {
     return (
         <Router>
             <Routes>
-                <Route exact path="/todos" element={<Todos />} />
-                <Route path="/" element={<SignIn />} />
-                <Route exact path="/signup" element={<SignUp />}/>
+                <Route path="/todos" element={<Todos />} />
+                <Route exact path="/" element={<SignIn />} /> 
+                <Route path="/signup" element={<SignUp />} />
                 <Route path="*" element={<SignIn />}/>
             </Routes>
         </Router>

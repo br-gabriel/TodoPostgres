@@ -3,14 +3,37 @@ import { FormInput } from "../../components/FormComponents/FormInput";
 import { FormButton } from "../../components/FormComponents/FormButton";
 import { Container, Content, Label, LabelError, LabelSignIn, Strong } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export function SignUp() {
-    const [firstName, setFirstName] = useState("");
     const [email, setEmail] = useState("");
-    const [emailConf, setEmailConf] = useState("");
+    const [emailConfirm, setEmailConfirm] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState("");
     const [error, setError] = useState("");
-    
+    const navigate = useNavigate();
+
+    async function handleSignUp() {
+        if (!email | !emailConfirm | !password | !passwordConfirm) {
+            setError("Preencha todos os campos");
+            return;
+        } else if (email !== emailConfirm) {
+            setError("Os emails não são iguais");
+            return;
+        } else if (password !== passwordConfirm) {
+            setError("As senhas não são iguais");
+            return;
+        }
+
+        await axios.post("http://localhost:3232/users", {
+            email: email,
+            password: password
+        });
+
+        alert("Usuário cadastrado com sucesso!");
+        navigate("/");
+    };
+
     return (
         <Container>
             <p>to<strong>.do</strong></p>
@@ -30,8 +53,8 @@ export function SignUp() {
                 <FormInput 
                     type="email"
                     placeholder="Confirme seu e-mail"
-                    value={emailConf}
-                    onChange={(event) => [setEmailConf(event.target.value), setError("")]}
+                    value={emailConfirm}
+                    onChange={(event) => [setEmailConfirm(event.target.value), setError("")]}
                 />
 
                 <FormInput 
@@ -41,9 +64,16 @@ export function SignUp() {
                     onChange={(event) => [setPassword(event.target.value), setError("")]}
                 />
 
+                <FormInput 
+                    type="password"
+                    placeholder="Confirme sua senha"
+                    value={passwordConfirm}
+                    onChange={(event) => [setPasswordConfirm(event.target.value), setError("")]}
+                />
+
                 <LabelError>{error}</LabelError>
 
-                <FormButton Text="Cadastre-se" onClick={console.log("handleSignUp")}/>
+                <FormButton Text="Cadastre-se" onClick={handleSignUp}/>
 
                 <LabelSignIn>
                     Já tem uma conta?
