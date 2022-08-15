@@ -25,7 +25,7 @@ export function SignUp() {
             return;
         }
 
-        await axios.post("http://localhost:3232/users", {
+        await axios.post("http://localhost:3232/user/signup", {
             email: email,
             password: password
         });

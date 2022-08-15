@@ -3,12 +3,32 @@ import { Container, Content, Label, LabelError, LabelSignUp, Strong } from "./st
 import { FormInput } from "../../components/FormComponents/FormInput";
 import { FormButton } from "../../components/FormComponents/FormButton";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    
+    const navigate = useNavigate();
+
+    async function handleSignIn() {
+        if(!email) {
+            setError("Email é obrigatório")
+            return;
+        } else if (!password) {
+            setError("Senha é obrigatória")
+            return;
+        };
+
+        await axios.post("http://localhost:3232/user/signup", {
+            email: email,
+            password: password
+        });
+
+        alert("Login efetuado com sucesso!");
+        navigate("/todos");
+    };
+
     return (
         <Container>
             <p>to<strong>.do</strong></p>
@@ -34,7 +54,7 @@ export function SignIn() {
 
                 <LabelError>{error}</LabelError>
 
-                <FormButton Text="Entrar" onClick={console.log("teste")} />
+                <FormButton Text="Entrar" onClick={handleSignIn} />
                 
                 <LabelSignUp>
                     Não tem uma conta?
