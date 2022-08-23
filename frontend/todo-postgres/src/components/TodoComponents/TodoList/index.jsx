@@ -6,22 +6,24 @@ import { EditTaskModal } from "../EditTaskModal";
 import axios from "axios";
 
 export function TodoList() {
-    const {getTodos, todos} = useContext(GetContext);
+    const {getTodos, todos, getUserId, user} = useContext(GetContext);
     const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
     const [selectedTodo, setSelectedTodo] = useState();
     const [oldTaskTitle, setOldTaskTitle] = useState();
 
     async function deleteTodo(todo) {
-        await axios.delete(`http://localhost:3232/todos/${todo.id}`);
-        getTodos();
+        await axios.delete(`http://localhost:3232/user/todos/${todo.id}`);
+        getUserId();
+        getTodos(user);
     };
 
     async function handleStatusChange(todo) {
-        await axios.put("http://localhost:3232/todos", {
+        await axios.put(`http://localhost:3232/user/todos`, {
             id: todo.id,
             status: !todo.status
         });
-        getTodos();
+        getUserId();
+        getTodos(user);
     };
 
     async function todoSelected(todo) {
@@ -58,7 +60,6 @@ export function TodoList() {
                                 <AiOutlineDelete size={20} color={"#E52E4D"} />
                             </button>
                         </section>
-                        
                     </Todo>
                 );
             })}

@@ -20,13 +20,18 @@ export function SignIn() {
             return;
         };
 
-        await axios.post("http://localhost:3232/user/signup", {
-            email: email,
-            password: password
-        });
+        try {
+            await axios.post("http://localhost:3232/user/signin", {
+                email: email,
+                password: password
+            });
+        
+            alert("Login efetuado com sucesso!");
+            navigate("/todos");
 
-        alert("Login efetuado com sucesso!");
-        navigate("/todos");
+        } catch(err) {
+            console.log(err);
+        }
     };
 
     return (

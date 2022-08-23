@@ -7,23 +7,24 @@ import axios from "axios";
 Modal.setAppElement("#root");
 
 export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }) {
-    const { getTodos } = useContext(GetContext);
+    const { getTodos, getUserId, user } = useContext(GetContext);
     const [newTodoValue, setNewTodoValue] = useState("");
 
-    async function updateTask() {
+    async function renameTask() {
         const filteredInput = newTodoValue.trim();
         
         if(filteredInput === "") {
             return;
         }
 
-        await axios.put("http://localhost:3232/todos", {
+        await axios.put(`http://localhost:3232/user/todos`, {
             id: todoSelected.id,
             name: newTodoValue
         });
 
         setNewTodoValue("");
-        getTodos();
+        getUserId();
+        getTodos(user);
     };
 
     return (
@@ -40,7 +41,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }
                     <button className="cancelButton" onClick={onRequestClose}>
                         Cancelar
                     </button>
-                    <button className="updateButton" onClick={updateTask}>
+                    <button className="updateButton" onClick={renameTask}>
                         Salvar
                     </button> 
                 </div>
