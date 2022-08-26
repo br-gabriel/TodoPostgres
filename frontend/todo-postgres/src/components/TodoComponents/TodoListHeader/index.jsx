@@ -5,7 +5,7 @@ import { GetContext } from "../../../contexts/getContext";
 import axios from "axios";
 
 export function TodoListHeader() {
-    const {getTodos, getUserId, user} = useContext(GetContext);
+    const {getTodos} = useContext(GetContext);
     const [inputValue, setInputValue] = useState("");
     
     async function createTodo() {
@@ -14,13 +14,12 @@ export function TodoListHeader() {
         if(filteredInput === "") {
             return;
         }
-
-        getUserId();
         
-        await axios.post(`http://localhost:3232/user/${user.id}/todos`, {
+        await axios.post(`http://localhost:3232/user/todos`, {
             name: inputValue,
         });
-        getTodos(user);
+        
+        getTodos();
         setInputValue("");
     };
 

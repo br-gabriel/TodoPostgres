@@ -7,7 +7,7 @@ import axios from "axios";
 Modal.setAppElement("#root");
 
 export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }) {
-    const { getTodos, getUserId, user } = useContext(GetContext);
+    const {getTodos} = useContext(GetContext);
     const [newTodoValue, setNewTodoValue] = useState("");
 
     async function renameTask() {
@@ -23,8 +23,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }
         });
 
         setNewTodoValue("");
-        getUserId();
-        getTodos(user);
+        getTodos();
     };
 
     return (

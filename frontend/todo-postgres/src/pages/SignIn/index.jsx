@@ -25,10 +25,9 @@ export function SignIn() {
                 email: email,
                 password: password
             });
-        
-            alert("Login efetuado com sucesso!");
-            navigate("/todos");
 
+            //alert("Login efetuado com sucesso!");
+            navigate("/todos");
         } catch(err) {
             console.log(err);
         }

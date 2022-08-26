@@ -1,18 +1,19 @@
 const express = require("express");
-const { PrismaClient } = require("@prisma/client");
-const checkToken = require("../middlewares/checkToken");
-
 const todosRoutes = express.Router();
+
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-todosRoutes.post("/user/:id/todos", checkToken, async (req, res) => {
-    const { id: userId } = req.params;
-    const { name } = req.body;
+const authorization = require("../middlewares/authorization");
+const jwt = require("jsonwebtoken");
 
-    if(!userId) {
-        return res.status(400).json("Id de usuário é obrigatório");
-    };
+todosRoutes.post("/user/todos", authorization, async (req, res) => {
+    const { name } = req.body;
     
+    const token = req.cookies.access_token;
+    const decodedToken = await jwt.decode(token);
+    const userId = decodedToken.id;
+
     const todo = await prisma.todo.create({
         data: {
             name,
@@ -23,19 +24,17 @@ todosRoutes.post("/user/:id/todos", checkToken, async (req, res) => {
     return res.status(201).json(todo);
 });
 
-todosRoutes.get("/user/:id/todos", checkToken, async (req, res) => {
-    const { id: userId } = req.params;
-
-    if(!userId) {
-        return res.status(400).json("Id de usuário é obrigatório");
-    };
+todosRoutes.get("/user/todos", authorization, async (req, res) => {
+    const token = req.cookies.access_token;
+    const decodedToken = await jwt.decode(token);
+    const userId = decodedToken.id;
 
     const allTodos = await prisma.todo.findMany({ where: { userId } });
 
     return res.status(200).json(allTodos);
 });
 
-todosRoutes.put("/user/todos", checkToken, async (req, res) => {
+todosRoutes.put("/user/todos", authorization, async (req, res) => {
     const { name, id, status } = req.body;
     
     if(!id) {
@@ -63,7 +62,7 @@ todosRoutes.put("/user/todos", checkToken, async (req, res) => {
     return res.status(200).json(todo);
 });
 
-todosRoutes.delete("/user/todos/:todoid", checkToken, async (req, res) => {
+todosRoutes.delete("/user/todos/:todoid", authorization, async (req, res) => {
     const { todoid } = req.params;
     const intID = parseInt(todoid);
     

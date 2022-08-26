@@ -5,26 +5,19 @@ import axios from "axios";
 export const GetContext = createContext();
 
 export function GetContextProvider({children}) {
-    const [user, setUser] = useState();
     const [todos, setTodos] = useState([]);
 
-    async function getUserId() {
-        const response = await axios.get(`http://localhost:3232/user/id`)
-        setUser(response.data);
-    };
-
-    async function getTodos(user) {
-        const response = await axios.get(`http://localhost:3232/user/${user.id}/todos`)
+    async function getTodos() {
+        const response = await axios.get(`http://localhost:3232/user/todos`)
         setTodos(response.data);
     };
 
     useEffect(() => {
-        getUserId();
-        getTodos(user);
+        getTodos();
     }, []);
 
     return (
-        <GetContext.Provider value={{getTodos, todos, getUserId, user}}>
+        <GetContext.Provider value={{getTodos, todos}}>
             {children}    
         </GetContext.Provider>
     )

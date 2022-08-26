@@ -6,15 +6,14 @@ import { EditTaskModal } from "../EditTaskModal";
 import axios from "axios";
 
 export function TodoList() {
-    const {getTodos, todos, getUserId, user} = useContext(GetContext);
+    const {getTodos, todos} = useContext(GetContext);
     const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
     const [selectedTodo, setSelectedTodo] = useState();
     const [oldTaskTitle, setOldTaskTitle] = useState();
 
     async function deleteTodo(todo) {
         await axios.delete(`http://localhost:3232/user/todos/${todo.id}`);
-        getUserId();
-        getTodos(user);
+        getTodos();
     };
 
     async function handleStatusChange(todo) {
@@ -22,8 +21,7 @@ export function TodoList() {
             id: todo.id,
             status: !todo.status
         });
-        getUserId();
-        getTodos(user);
+        getTodos();
     };
 
     async function todoSelected(todo) {
