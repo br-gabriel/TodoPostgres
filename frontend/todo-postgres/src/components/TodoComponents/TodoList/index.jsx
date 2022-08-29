@@ -12,7 +12,7 @@ export function TodoList() {
     const [oldTaskTitle, setOldTaskTitle] = useState();
 
     async function deleteTodo(todo) {
-        await axios.delete(`http://localhost:3232/user/todos/${todo.id}`);
+        await axios.delete(`http://localhost:3232/user/todos/${todo.id}`, { withCredentials: true });
         getTodos();
     };
 
@@ -20,7 +20,7 @@ export function TodoList() {
         await axios.put(`http://localhost:3232/user/todos`, {
             id: todo.id,
             status: !todo.status
-        });
+        }, { withCredentials: true });
         getTodos();
     };
 

@@ -24,10 +24,10 @@ export function SignIn() {
             await axios.post("http://localhost:3232/user/signin", {
                 email: email,
                 password: password
-            });
-
-            //alert("Login efetuado com sucesso!");
+            }, { withCredentials: true });
+            
             navigate("/todos");
+
         } catch(err) {
             console.log(err);
         }

@@ -20,7 +20,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }
         await axios.put(`http://localhost:3232/user/todos`, {
             id: todoSelected.id,
             name: newTodoValue
-        });
+        }, { withCredentials: true });
 
         setNewTodoValue("");
         getTodos();

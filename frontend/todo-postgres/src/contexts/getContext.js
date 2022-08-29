@@ -8,7 +8,7 @@ export function GetContextProvider({children}) {
     const [todos, setTodos] = useState([]);
 
     async function getTodos() {
-        const response = await axios.get(`http://localhost:3232/user/todos`)
+        const response = await axios.get(`http://localhost:3232/user/todos`, {withCredentials: true});
         setTodos(response.data);
     };
 

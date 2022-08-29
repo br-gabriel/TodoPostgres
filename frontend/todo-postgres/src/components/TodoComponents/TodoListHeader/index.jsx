@@ -17,7 +17,7 @@ export function TodoListHeader() {
         
         await axios.post(`http://localhost:3232/user/todos`, {
             name: inputValue,
-        });
+        }, { withCredentials: true });
         
         getTodos();
         setInputValue("");

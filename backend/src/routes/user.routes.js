@@ -61,6 +61,7 @@ userRoutes.post("/user/signin", async (req, res) => {
         return res.cookie("access_token", token, {
             httpOnly: true,
         }).status(200).json({ message: "Autenticação realizada com sucesso" });
+        
     } catch {
         return res.status(500).json({ error: "Erro interno do servidor, tente mais tarde" });
     }
