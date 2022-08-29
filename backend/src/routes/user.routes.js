@@ -63,7 +63,7 @@ userRoutes.post("/user/signin", async (req, res) => {
         }).status(200).json({ message: "Autenticação realizada com sucesso" });
         
     } catch {
-        return res.status(500).json({ error: "Erro interno do servidor, tente mais tarde" });
+        return res.status(500).json({ error: "Erro interno do servidor" });
     }
 });
 

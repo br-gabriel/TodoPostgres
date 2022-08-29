@@ -38,7 +38,7 @@ todosRoutes.put("/user/todos", authorization, async (req, res) => {
     const { name, id, status } = req.body;
     
     if(!id) {
-        return res.status(400).json("Id é obrigatório");
+        return res.status(400).json({ error: "Id é obrigatório" });
     };
 
     const todoAlreadyExists = await prisma.todo.findUnique({
@@ -46,7 +46,7 @@ todosRoutes.put("/user/todos", authorization, async (req, res) => {
     });
 
     if(!todoAlreadyExists) {
-        return res.status(404).json("Essa tarefa não existe");
+        return res.status(404).json({ error: "Essa tarefa não existe" });
     };
 
     const todo = await prisma.todo.update({
@@ -67,7 +67,7 @@ todosRoutes.delete("/user/todos/:todoid", authorization, async (req, res) => {
     const intID = parseInt(todoid);
     
     if(!intID) {
-        return res.status(400).json("Id é obrigatório");
+        return res.status(400).json({ error: "Id é obrigatório" });
     };
 
     const todoAlreadyExists = await prisma.todo.findUnique({
@@ -75,7 +75,7 @@ todosRoutes.delete("/user/todos/:todoid", authorization, async (req, res) => {
     });
 
     if(!todoAlreadyExists) {
-        return res.status(404).json("Essa tarefa não existe");
+        return res.status(404).json({ error: "Essa tarefa não existe" });
     };
 
     await prisma.todo.delete({ where: { id: intID } });
