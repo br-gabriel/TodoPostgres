@@ -17,5 +17,25 @@ export const Content = styled.div `
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+
+    button {
+        width: 100%;
+        max-width: 100px;
+
+        background-color: transparent;
+        color: white;
+
+        padding: .5rem;
+        
+        border: 1px solid white;
+        border-radius: 0.5rem;
+        
+        font-weight: bold;
+
+        &:hover {
+            filter: brightness(0.8);
+            transition: .2s;
+        }
+    }
 `

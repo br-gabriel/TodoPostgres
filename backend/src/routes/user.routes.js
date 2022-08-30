@@ -67,4 +67,8 @@ userRoutes.post("/user/signin", async (req, res) => {
     }
 });
 
+userRoutes.post("/user/signout", async(req, res) => {
+    return res.clearCookie("access_token");
+})
+
 module.exports = userRoutes;
