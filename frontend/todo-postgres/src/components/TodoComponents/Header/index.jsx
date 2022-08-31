@@ -7,10 +7,10 @@ export function Header() {
 
     async function handleSignOut() {
         try {
-            //await axios.post("http://localhost:3232/user/signout");
+            await axios.get("http://localhost:3232/user/signout", { withCredentials: true });
             navigate("/");
-        } catch(err) {
-            console.log(err);
+        } catch {
+            console.log("erro");
         }
     };
     
