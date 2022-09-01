@@ -26,7 +26,7 @@ export function SignIn() {
                 password: password
             }, { withCredentials: true });
             
-            navigate("/todos");
+            navigate("/todos", { replace: true });
 
         } catch(err) {
             console.log(err);
