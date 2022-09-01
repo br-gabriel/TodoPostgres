@@ -8,7 +8,7 @@ export function Header() {
     async function handleSignOut() {
         try {
             await axios.get("http://localhost:3232/user/signout", { withCredentials: true });
-            navigate("/");
+            navigate("/", { replace: true });
         } catch {
             console.log("erro");
         }
