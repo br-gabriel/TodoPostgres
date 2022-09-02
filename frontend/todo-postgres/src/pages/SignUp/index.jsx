@@ -34,8 +34,9 @@ export function SignUp() {
             alert("Usuário cadastrado com sucesso!");
             navigate("/");
             
-        } catch(err) {
-            console.log(err);
+        } catch(res) {
+            const errorMessage = res.response.data.error;
+            setError(errorMessage);
         }
     };
 
