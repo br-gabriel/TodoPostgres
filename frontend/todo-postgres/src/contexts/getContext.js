@@ -1,5 +1,4 @@
-import { createContext } from "react";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 export const GetContext = createContext();
@@ -20,5 +19,5 @@ export function GetContextProvider({children}) {
         <GetContext.Provider value={{getTodos, todos}}>
             {children}    
         </GetContext.Provider>
-    )
+    );
 };
