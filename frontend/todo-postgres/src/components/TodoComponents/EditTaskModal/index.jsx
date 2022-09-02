@@ -2,6 +2,7 @@ import Modal from "react-modal";
 import { useState, useContext } from "react";
 import { GetContext } from "../../../contexts/getContext";
 import { Container } from "./styles";
+import { useAuth } from "../../../contexts/authContext";
 import axios from "axios";
 
 Modal.setAppElement("#root");
@@ -9,21 +10,27 @@ Modal.setAppElement("#root");
 export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }) {
     const {getTodos} = useContext(GetContext);
     const [newTodoValue, setNewTodoValue] = useState("");
+    const authentication = useAuth();
 
     async function renameTask() {
         const filteredInput = newTodoValue.trim();
         
         if(filteredInput === "") {
             return;
-        }
+        };
 
-        await axios.put(`http://localhost:3232/user/todos`, {
-            id: todoSelected.id,
-            name: newTodoValue
-        }, { withCredentials: true });
+        try {
+            await axios.put(`http://localhost:3232/user/todos`, {
+                id: todoSelected.id,
+                name: newTodoValue
+            }, { withCredentials: true });
+
+            getTodos();
+        } catch {
+            authentication.logout();
+        };
 
         setNewTodoValue("");
-        getTodos();
     };
 
     return (

@@ -3,6 +3,7 @@ import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useContext, useState } from "react";
 import { GetContext } from "../../../contexts/getContext";
 import { EditTaskModal } from "../EditTaskModal";
+import { useAuth } from "../../../contexts/authContext";
 import axios from "axios";
 
 export function TodoList() {
@@ -10,18 +11,28 @@ export function TodoList() {
     const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
     const [selectedTodo, setSelectedTodo] = useState();
     const [oldTaskTitle, setOldTaskTitle] = useState();
+    const authentication = useAuth();
 
     async function deleteTodo(todo) {
-        await axios.delete(`http://localhost:3232/user/todos/${todo.id}`, { withCredentials: true });
-        getTodos();
+        try {
+            await axios.delete(`http://localhost:3232/user/todos/${todo.id}`, { withCredentials: true });
+            getTodos();
+        } catch {
+            authentication.logout();
+        };
     };
 
     async function handleStatusChange(todo) {
-        await axios.put(`http://localhost:3232/user/todos`, {
-            id: todo.id,
-            status: !todo.status
-        }, { withCredentials: true });
-        getTodos();
+        try {
+            await axios.put(`http://localhost:3232/user/todos`, {
+                id: todo.id,
+                status: !todo.status
+            }, { withCredentials: true });
+            
+            getTodos();
+        } catch {
+            authentication.logout();
+        };
     };
 
     async function todoSelected(todo) {

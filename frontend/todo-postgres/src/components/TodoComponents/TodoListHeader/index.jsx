@@ -2,24 +2,31 @@ import { MainHeader } from "./styles";
 import { AiOutlineSend } from "react-icons/ai";
 import { useState, useContext } from "react";
 import { GetContext } from "../../../contexts/getContext";
+import { useAuth } from "../../../contexts/authContext";
 import axios from "axios";
 
 export function TodoListHeader() {
     const {getTodos} = useContext(GetContext);
     const [inputValue, setInputValue] = useState("");
+    const authentication = useAuth(); 
     
     async function createTodo() {
         const filteredInput = inputValue.trim();
         
         if(filteredInput === "") {
             return;
-        }
+        };
         
-        await axios.post(`http://localhost:3232/user/todos`, {
-            name: inputValue,
-        }, { withCredentials: true });
+        try {
+            await axios.post(`http://localhost:3232/user/todos`, {
+                name: inputValue,
+            }, { withCredentials: true });
+            
+            getTodos();
+        } catch {
+            authentication.logout();
+        };
         
-        getTodos();
         setInputValue("");
     };
 
@@ -42,5 +49,5 @@ export function TodoListHeader() {
                 </button>
             </div>
         </MainHeader>
-    )
-}
+    );
+};
