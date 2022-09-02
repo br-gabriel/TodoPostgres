@@ -3,6 +3,7 @@ import { Container, Content, Label, LabelError, LabelSignUp, Strong } from "./st
 import { FormInput } from "../../components/FormComponents/FormInput";
 import { FormButton } from "../../components/FormComponents/FormButton";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 import axios from "axios";
 
 export function SignIn() {
@@ -10,13 +11,14 @@ export function SignIn() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const authentication = useAuth();
 
     async function handleSignIn() {
         if(!email) {
-            setError("Email é obrigatório")
+            setError("Email é obrigatório");
             return;
         } else if (!password) {
-            setError("Senha é obrigatória")
+            setError("Senha é obrigatória");
             return;
         };
 
@@ -26,11 +28,13 @@ export function SignIn() {
                 password: password
             }, { withCredentials: true });
             
+            authentication.login();
             navigate("/todos", { replace: true });
-
-        } catch(err) {
-            console.log(err);
-        }
+            
+        } catch(res) {
+            const errorMessage = res.response.data.error;
+            setError(errorMessage);
+        };
     };
 
     return (
