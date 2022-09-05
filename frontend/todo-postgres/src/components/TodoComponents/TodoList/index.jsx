@@ -1,4 +1,4 @@
-import { Todo } from "./styles";
+import { Container, Todo } from "./styles";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useContext, useState } from "react";
 import { GetContext } from "../../../contexts/getContext";
@@ -52,7 +52,7 @@ export function TodoList() {
     };
     
     return (
-        <div>
+        <Container>
             {todos.map((todo) => {
                 return (
                     <Todo key={todo.id}>
@@ -79,6 +79,6 @@ export function TodoList() {
                 todoSelected={selectedTodo}
                 OldTitle={oldTaskTitle}
             />
-        </div>
+        </Container>
     );
 };

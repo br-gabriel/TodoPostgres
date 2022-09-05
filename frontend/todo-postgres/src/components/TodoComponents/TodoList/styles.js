@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
+export const Container = styled.div `
+    max-height: 500px;
+    overflow-y: scroll;
+`
+
 export const Todo = styled.div `
     max-width: 1120px;
-    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
+
     div {
         display: flex;
         flex-direction: row;
@@ -23,9 +27,15 @@ export const Todo = styled.div `
         input {
             margin-right: 1rem;
         }
+
+        
     }
 
     section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
         margin-right: 1.7rem;
 
         button {
