@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         --green: #3FAD27;
         --text-title: #303134;
         --text-body: #969CB3;
-        --gray-divisor: #BBC4E7;
+        --gray: #BBC4E7;
         --input-background: #f0f2f5; 
     }
 
@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        position: relative;
         background: var(--background);
         min-height: 100vh;
     }
