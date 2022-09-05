@@ -3,14 +3,19 @@ import styled from "styled-components";
 export const Container = styled.header `
     width: 100%;
     height: 30vh;
-    padding-top: 2rem;
     background-color: var(--blue);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 export const Content = styled.div `
+    width: 90%;
     max-width: 1120px;
-    margin: 0 auto;
-    padding: 2rem 1rem 12rem;
+
+    position: absolute;
+    top: 3rem;
     
     color: white;
     font-size: 2.2rem;
