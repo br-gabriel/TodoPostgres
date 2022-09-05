@@ -9,7 +9,15 @@ const bcrypt = require("bcrypt");
 
 
 userRoutes.post("/user/signup", async (req, res) => {
-    const { email, password } = req.body;
+    const { email, emailConfirm, password, passwordConfirm } = req.body;
+
+    if (!email | !emailConfirm | !password | !passwordConfirm) {
+        return res.status(400).json({ error: "Preencha todos os campos" });
+    } else if (email !== emailConfirm) {
+        return res.status(422).json({ error: "Os emails não são iguais" });
+    } else if (password !== passwordConfirm) {
+        return res.status(422).json({ error: "As senhas não são iguais" });
+    }
 
     const userExists = await prisma.user.findUnique({
         where: { email }
@@ -34,6 +42,12 @@ userRoutes.post("/user/signup", async (req, res) => {
 userRoutes.post("/user/signin", async (req, res) => {
     const { email, password } = req.body;
 
+    if(!email) {
+        return res.status(400).json({ error: "Email é obrigatório" });
+    } else if (!password) {
+        return res.status(400).json({ error: "Senha é obrigatória" });
+    };
+
     const userExists = await prisma.user.findUnique({
         where: { email }
     });
@@ -55,7 +69,7 @@ userRoutes.post("/user/signin", async (req, res) => {
                 id: userExists.id,
             },
             secret,
-            {expiresIn: '8h'}
+            {expiresIn: '1min'}
         );
 
         return res.cookie("access_token", token, {
