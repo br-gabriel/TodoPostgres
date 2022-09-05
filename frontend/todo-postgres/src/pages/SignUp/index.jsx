@@ -14,21 +14,12 @@ export function SignUp() {
     const navigate = useNavigate();
 
     async function handleSignUp() {
-        if (!email | !emailConfirm | !password | !passwordConfirm) {
-            setError("Preencha todos os campos");
-            return;
-        } else if (email !== emailConfirm) {
-            setError("Os emails não são iguais");
-            return;
-        } else if (password !== passwordConfirm) {
-            setError("As senhas não são iguais");
-            return;
-        }
-
         try {
             await axios.post("http://localhost:3232/user/signup", {
                 email: email,
-                password: password
+                emailConfirm: emailConfirm,
+                password: password,
+                passwordConfirm: passwordConfirm
             });
             
             alert("Usuário cadastrado com sucesso!");

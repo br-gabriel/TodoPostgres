@@ -14,14 +14,6 @@ export function SignIn() {
     const authentication = useAuth();
 
     async function handleSignIn() {
-        if(!email) {
-            setError("Email é obrigatório");
-            return;
-        } else if (!password) {
-            setError("Senha é obrigatória");
-            return;
-        };
-
         try {
             await axios.post("http://localhost:3232/user/signin", {
                 email: email,
