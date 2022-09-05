@@ -9,6 +9,39 @@ export const MainHeader = styled.div `
     color: var(--text-title);
     padding: 4rem 3rem;
 
+    @media (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        
+        div {
+            margin: 1.5rem 0 -2rem;
+
+            input {
+                width: 20rem;
+            }
+        }
+    }
+
+    @media (max-width: 425px) {        
+        div {
+            input {
+                width: 15rem;
+            }
+        }
+    }
+
+    @media (max-width: 360px) {        
+        h1 {
+            font-size: 1.7rem;
+        }
+        
+        div {
+            input {
+                width: 12rem;
+            }
+        }
+    }
+
     div {
         display: flex;
         align-items: center;
