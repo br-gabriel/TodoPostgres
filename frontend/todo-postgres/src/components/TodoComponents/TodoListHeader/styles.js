@@ -42,6 +42,20 @@ export const MainHeader = styled.div `
         }
     }
 
+    @media (max-width: 360px) {        
+        padding: 2rem 1rem;
+        
+        h1 {
+            font-size: 1.2rem;
+        }
+        
+        div {
+            input {
+                width: 10.5rem;
+            }
+        }
+    }
+
     div {
         display: flex;
         align-items: center;

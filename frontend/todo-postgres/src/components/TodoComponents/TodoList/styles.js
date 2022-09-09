@@ -3,6 +3,33 @@ import styled from "styled-components";
 export const Container = styled.div `
     max-height: 500px;
     overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+        width: 15px;
+        background-color: white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--text-body);
+        border: 2px solid white;
+        border-radius: 1rem;
+    }
+
+    @media (max-height: 926px) {
+        max-height: 22rem;
+    }
+
+    @media (max-height: 844px) {
+        max-height: 17rem;
+    }
+
+    @media (max-height: 780px) {
+        max-height: 14.5rem;
+    }
+
+    @media (max-height: 600px) {
+        max-height: 6.5rem;
+    }
 `
 
 export const Todo = styled.div `
@@ -27,8 +54,6 @@ export const Todo = styled.div `
         input {
             margin-right: 1rem;
         }
-
-        
     }
 
     section {
@@ -47,7 +72,6 @@ export const Todo = styled.div `
                 filter: brightness(0.5)
             }
         }
-
     }
 
     .editButton:hover {
