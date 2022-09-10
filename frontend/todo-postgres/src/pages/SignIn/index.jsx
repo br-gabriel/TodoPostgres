@@ -13,13 +13,14 @@ export function SignIn() {
     const navigate = useNavigate();
     const authentication = useAuth();
 
-    async function handleSignIn() {
+    async function handleSignIn(event) {
+        event.preventDefault();
         try {
             await axios.post("http://localhost:3232/user/signin", {
                 email: email,
                 password: password
             }, { withCredentials: true });
-            
+
             authentication.login();
             navigate("/todos", { replace: true });
             
@@ -54,8 +55,8 @@ export function SignIn() {
 
                 <LabelError>{error}</LabelError>
 
-                <FormButton Text="Entrar" onClick={handleSignIn} />
-                
+                <FormButton type="submit" onClick={handleSignIn} Text="Entrar" />
+
                 <LabelSignUp>
                     Não tem uma conta?
                     <Strong>

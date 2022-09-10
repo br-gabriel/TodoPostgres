@@ -13,7 +13,8 @@ export function SignUp() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    async function handleSignUp() {
+    async function handleSignUp(event) {
+        event.preventDefault();
         try {
             await axios.post("http://localhost:3232/user/signup", {
                 email: email,
@@ -70,7 +71,7 @@ export function SignUp() {
 
                 <LabelError>{error}</LabelError>
 
-                <FormButton Text="Cadastre-se" onClick={handleSignUp}/>
+                <FormButton Type="submit" onClick={handleSignUp} Text="Cadastre-se"/>
 
                 <LabelSignIn>
                     Já tem uma conta?
