@@ -12,7 +12,8 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }
     const [newTodoValue, setNewTodoValue] = useState("");
     const authentication = useAuth();
 
-    async function renameTask() {
+    async function renameTask(event) {
+        event.preventDefault();
         const filteredInput = newTodoValue.trim();
         
         if(filteredInput === "") {
@@ -44,10 +45,10 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }
                 <h2>Editar tarefa</h2>
                 <input type="text" defaultValue={OldTitle} onChange={event => setNewTodoValue(event.target.value)}/>
                 <div>
-                    <button className="cancelButton" onClick={onRequestClose}>
+                    <button type="reset" className="cancelButton" onClick={onRequestClose}>
                         Cancelar
                     </button>
-                    <button className="updateButton" onClick={renameTask}>
+                    <button type="submit" className="updateButton" onClick={renameTask}>
                         Salvar
                     </button> 
                 </div>
