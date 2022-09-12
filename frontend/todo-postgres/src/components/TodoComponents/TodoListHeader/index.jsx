@@ -10,7 +10,8 @@ export function TodoListHeader() {
     const [inputValue, setInputValue] = useState("");
     const authentication = useAuth(); 
     
-    async function createTodo() {
+    async function createTodo(event) {
+        event.preventDefault();
         const filteredInput = inputValue.trim();
         
         if(filteredInput === "") {
@@ -34,7 +35,7 @@ export function TodoListHeader() {
         <MainHeader>
             <h1>Minhas tarefas</h1>
 
-            <div>
+            <form>
                 <input 
                     type="text" 
                     value={inputValue} 
@@ -44,10 +45,10 @@ export function TodoListHeader() {
                     placeholder="Adicionar tarefa"
                 ></input>
 
-                <button onClick={createTodo}>
+                <button onClick={createTodo} type="submit">
                     <AiOutlineSend size={25} color={"#fff"}/>
                 </button>
-            </div>
+            </form>
         </MainHeader>
     );
 };

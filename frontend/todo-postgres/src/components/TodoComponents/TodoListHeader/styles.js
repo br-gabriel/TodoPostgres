@@ -56,7 +56,7 @@ export const MainHeader = styled.div `
         }
     }
 
-    div {
+    form {
         display: flex;
         align-items: center;
         flex-direction: row;
