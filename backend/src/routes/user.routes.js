@@ -11,10 +11,14 @@ const bcrypt = require("bcrypt");
 userRoutes.post("/user/signup", async (req, res) => {
     const { email, emailConfirm, password, passwordConfirm } = req.body;
 
+    const checkPasswordLength = password.length;
+
     if (!email | !emailConfirm | !password | !passwordConfirm) {
         return res.status(400).json({ error: "Preencha todos os campos" });
     } else if (email !== emailConfirm) {
         return res.status(422).json({ error: "Os emails não são iguais" });
+    } else if (checkPasswordLength < 8) {
+        return res.status(422).json({ error: "A senha deve conter 8 ou mais caracteres" });
     } else if (password !== passwordConfirm) {
         return res.status(422).json({ error: "As senhas não são iguais" });
     }
