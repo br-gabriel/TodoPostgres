@@ -55,6 +55,7 @@ export const LabelSignIn = styled.label`
 export const LabelError = styled.label`
     font-size: 1rem;
     color: var(--red);
+    text-align: center;
 `;
 
 export const Strong = styled.strong`
