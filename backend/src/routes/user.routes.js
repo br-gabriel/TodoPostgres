@@ -12,6 +12,7 @@ userRoutes.post("/user/signup", async (req, res) => {
     const { email, emailConfirm, password, passwordConfirm } = req.body;
 
     const checkPasswordLength = password.length;
+    const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
     if (!email | !emailConfirm | !password | !passwordConfirm) {
         return res.status(400).json({ error: "Preencha todos os campos" });
@@ -21,6 +22,8 @@ userRoutes.post("/user/signup", async (req, res) => {
         return res.status(422).json({ error: "A senha deve conter 8 ou mais caracteres" });
     } else if (password !== passwordConfirm) {
         return res.status(422).json({ error: "As senhas não são iguais" });
+    } else if (emailRegex.test(email) === false) {
+        return res.status(422).json({ error: "Formato do email é inválido" })
     }
 
     const userExists = await prisma.user.findUnique({
@@ -73,7 +76,7 @@ userRoutes.post("/user/signin", async (req, res) => {
                 id: userExists.id,
             },
             secret,
-            {expiresIn: '8h'}
+            {expiresIn: '1min'}
         );
 
         return res.cookie("access_token", token, {
