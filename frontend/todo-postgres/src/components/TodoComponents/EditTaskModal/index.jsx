@@ -10,7 +10,7 @@ Modal.setAppElement("#root");
 export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }) {
     const {getTodos} = useContext(GetContext);
     const [newTodoValue, setNewTodoValue] = useState("");
-    const {logout} = AuthContext(AuthContext);
+    const {logout} = useContext(AuthContext);
 
     async function renameTask(event) {
         event.preventDefault();
