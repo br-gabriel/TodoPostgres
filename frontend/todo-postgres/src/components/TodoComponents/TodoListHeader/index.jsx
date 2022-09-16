@@ -2,13 +2,13 @@ import { MainHeader } from "./styles";
 import { AiOutlineSend } from "react-icons/ai";
 import { useState, useContext } from "react";
 import { GetContext } from "../../../contexts/getContext";
-import { useAuth } from "../../../contexts/authContext";
+import { AuthContext } from "../../../contexts/authContext";
 import axios from "axios";
 
 export function TodoListHeader() {
     const {getTodos} = useContext(GetContext);
     const [inputValue, setInputValue] = useState("");
-    const authentication = useAuth(); 
+    const {logout} = useContext(AuthContext); 
     
     async function createTodo(event) {
         event.preventDefault();
@@ -25,7 +25,7 @@ export function TodoListHeader() {
             
             getTodos();
         } catch {
-            authentication.logout();
+            logout();
         };
         
         setInputValue("");

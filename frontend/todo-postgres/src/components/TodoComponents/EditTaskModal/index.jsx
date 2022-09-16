@@ -2,7 +2,7 @@ import Modal from "react-modal";
 import { useState, useContext } from "react";
 import { GetContext } from "../../../contexts/getContext";
 import { Container } from "./styles";
-import { useAuth } from "../../../contexts/authContext";
+import { AuthContext } from "../../../contexts/authContext";
 import axios from "axios";
 
 Modal.setAppElement("#root");
@@ -10,7 +10,7 @@ Modal.setAppElement("#root");
 export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }) {
     const {getTodos} = useContext(GetContext);
     const [newTodoValue, setNewTodoValue] = useState("");
-    const authentication = useAuth();
+    const {logout} = AuthContext(AuthContext);
 
     async function renameTask(event) {
         event.preventDefault();
@@ -28,7 +28,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }
 
             getTodos();
         } catch {
-            authentication.logout();
+            logout();
         };
 
         setNewTodoValue("");

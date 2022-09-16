@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { Container, Content, Label, LabelError, LabelSignUp, Strong } from "./styles";
 import { FormInput } from "../../components/FormComponents/FormInput";
 import { FormButton } from "../../components/FormComponents/FormButton";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/authContext";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/authContext";
+import { useContext } from "react";
 import axios from "axios";
 
 export function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const navigate = useNavigate();
-    const authentication = useAuth();
+    const {login} = useContext(AuthContext);
 
     async function handleSignIn(event) {
         event.preventDefault();
@@ -21,8 +21,7 @@ export function SignIn() {
                 password: password
             }, { withCredentials: true });
 
-            authentication.login();
-            navigate("/todos", { replace: true });
+            login();
             
         } catch(res) {
             const errorMessage = res.response.data.error;

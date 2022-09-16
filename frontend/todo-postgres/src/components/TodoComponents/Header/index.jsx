@@ -1,17 +1,15 @@
 import { Container, Content } from "./styles";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../contexts/authContext";
+import { AuthContext } from "../../../contexts/authContext";
+import { useContext } from "react";
 import axios from "axios";
 
 export function Header() {
-    const navigate = useNavigate();
-    const authentication = useAuth();
+    const {logout} = useContext(AuthContext);
 
     async function handleSignOut() {
         try {
             await axios.get("http://localhost:3232/user/signout", { withCredentials: true });
-            navigate("/", { replace: true });
-            authentication.logout();
+            logout();
         } catch {
             console.log("erro");
         }

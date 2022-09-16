@@ -3,7 +3,7 @@ import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useContext, useState } from "react";
 import { GetContext } from "../../../contexts/getContext";
 import { EditTaskModal } from "../EditTaskModal";
-import { useAuth } from "../../../contexts/authContext";
+import { AuthContext } from "../../../contexts/authContext";
 import axios from "axios";
 
 export function TodoList() {
@@ -11,14 +11,14 @@ export function TodoList() {
     const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
     const [selectedTodo, setSelectedTodo] = useState();
     const [oldTaskTitle, setOldTaskTitle] = useState();
-    const authentication = useAuth();
+    const {logout} = useContext(AuthContext);
 
     async function deleteTodo(todo) {
         try {
             await axios.delete(`http://localhost:3232/user/todos/${todo.id}`, { withCredentials: true });
             getTodos();
         } catch {
-            authentication.logout();
+            logout();
         };
     };
 
@@ -31,7 +31,7 @@ export function TodoList() {
             
             getTodos();
         } catch {
-            authentication.logout();
+            logout();
         };
     };
 
@@ -53,7 +53,9 @@ export function TodoList() {
     
     return (
         <Container>
-            {todos.map((todo) => {
+            {todos
+                .sort((todo) => todo.status ? 0 : -1)
+                .map((todo) => {
                 return (
                     <Todo key={todo.id}>
                         <div className="custom-checkbox">
