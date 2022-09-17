@@ -75,7 +75,7 @@ userRoutes.post("/user/signin", async (req, res) => {
                 id: userExists.id,
             },
             secret,
-            {expiresIn: '1min'}
+            {expiresIn: '7d'}
         );
 
         return res.cookie("access_token", token, {
