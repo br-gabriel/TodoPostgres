@@ -11,19 +11,19 @@ import { PrivateRoute } from "./components/privateRoute";
 
 export function RoutesApp() {
     return (
-        <AuthProvider>
-            <Router>
+        <Router>
+            <AuthProvider>
                 <Routes>
-                    <Route path="/" element={<SignIn />} /> 
+                    <Route path="/signin" element={<SignIn />} /> 
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="*" element={<SignIn />}/>
-                    <Route path="/todos" element={
+                    <Route path="/" element={
                         <PrivateRoute>
                             <Todos />
                         </PrivateRoute>
                     } />
                 </Routes>
-            </Router>
-        </AuthProvider>
+            </AuthProvider>
+        </Router>
     );
 };
