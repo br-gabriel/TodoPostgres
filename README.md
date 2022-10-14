@@ -1,5 +1,5 @@
 # To Do Postgres - Front-end
-
+![Apresentacao](https://user-images.githubusercontent.com/53658830/195774779-2b9a6f70-5e5a-4871-b046-9202cec8f389.gif)
 ## Sobre o projeto
 Trata-se de uma aplicação de *to do list* com cadastro e login de usuário, utilizando o Postgres como banco de dados, React no front-end e NodeJS no back-end.
 
