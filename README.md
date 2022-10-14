@@ -1,7 +1,7 @@
 # To Do Postgres - Front-end
 
 ## Sobre o projeto
-Trata-se de uma aplicação de to do list com cadastro e login de usuário, utilizando o Postgres como banco de dados, React no front-end e NodeJS no back-end.
+Trata-se de uma aplicação de *to do list* com cadastro e login de usuário, utilizando o Postgres como banco de dados, React no front-end e NodeJS no back-end.
 
 ## Tecnologias
 * React
