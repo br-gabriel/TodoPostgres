@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { GetContext } from "../../../contexts/getContext";
 import { Container } from "./styles";
 import { AuthContext } from "../../../contexts/authContext";
-import axios from "axios";
+import api from "../../../services/api";
 
 Modal.setAppElement("#root");
 
@@ -21,7 +21,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }
         };
 
         try {
-            await axios.put(`http://localhost:3232/user/todos`, {
+            await api.put(`/user/todos`, {
                 id: todoSelected.id,
                 name: newTodoValue
             }, { withCredentials: true });

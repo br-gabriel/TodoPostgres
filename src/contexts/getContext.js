@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 export const GetContext = createContext();
 
@@ -7,7 +7,7 @@ export function GetContextProvider({children}) {
     const [todos, setTodos] = useState([]);
 
     async function getTodos() {
-        const response = await axios.get(`http://localhost:3232/user/todos`, {withCredentials: true});
+        const response = await api.get(`/user/todos`, {withCredentials: true});
         setTodos(response.data);
     };
 

@@ -5,7 +5,7 @@ import { FormButton } from "../../components/FormComponents/FormButton";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { useContext } from "react";
-import axios from "axios";
+import api from "../../services/api";
 
 export function SignIn() {
     const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export function SignIn() {
     async function handleSignIn(event) {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:3232/user/signin", {
+            await api.post("/user/signin", {
                 email: email,
                 password: password
             }, { withCredentials: true });

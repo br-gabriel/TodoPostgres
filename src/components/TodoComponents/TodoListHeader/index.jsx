@@ -3,7 +3,7 @@ import { AiOutlineSend } from "react-icons/ai";
 import { useState, useContext } from "react";
 import { GetContext } from "../../../contexts/getContext";
 import { AuthContext } from "../../../contexts/authContext";
-import axios from "axios";
+import api from "../../../services/api";
 
 export function TodoListHeader() {
     const {getTodos} = useContext(GetContext);
@@ -19,7 +19,7 @@ export function TodoListHeader() {
         };
         
         try {
-            await axios.post(`http://localhost:3232/user/todos`, {
+            await api.post(`/user/todos`, {
                 name: inputValue,
             }, { withCredentials: true });
             

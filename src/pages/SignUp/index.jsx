@@ -3,7 +3,7 @@ import { FormInput } from "../../components/FormComponents/FormInput";
 import { FormButton } from "../../components/FormComponents/FormButton";
 import { Container, Content, Label, LabelError, LabelSignIn, Strong } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../services/api";
 
 export function SignUp() {
     const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export function SignUp() {
     async function handleSignUp(event) {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:3232/user/signup", {
+            await api.post("/user/signup", {
                 email: email,
                 emailConfirm: emailConfirm,
                 password: password,

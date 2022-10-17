@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { GetContext } from "../../../contexts/getContext";
 import { EditTaskModal } from "../EditTaskModal";
 import { AuthContext } from "../../../contexts/authContext";
-import axios from "axios";
+import api from "../../../services/api";
 
 export function TodoList() {
     const {getTodos, todos} = useContext(GetContext);
@@ -15,7 +15,7 @@ export function TodoList() {
 
     async function deleteTodo(todo) {
         try {
-            await axios.delete(`http://localhost:3232/user/todos/${todo.id}`, { withCredentials: true });
+            await api.delete(`/user/todos/${todo.id}`, { withCredentials: true });
             getTodos();
         } catch {
             logout();
@@ -24,7 +24,7 @@ export function TodoList() {
 
     async function handleStatusChange(todo) {
         try {
-            await axios.put(`http://localhost:3232/user/todos`, {
+            await api.put(`/user/todos`, {
                 id: todo.id,
                 status: !todo.status
             }, { withCredentials: true });
