@@ -60,7 +60,7 @@ export function TodoList() {
                     <Todo key={todo.id}>
                         <div className="custom-checkbox">
                             <input id={todo.id} type={"checkbox"} readOnly checked={todo.status === true ? "checked" : ""} onClick={() => handleStatusChange(todo)}></input>
-                            <label for={todo.id}>{todo.name}</label>
+                            <label htmlFor={todo.id}>{todo.name}</label>
                         </div>
 
                         <section>
