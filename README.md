@@ -52,6 +52,12 @@ $ npm install
 ### Conectando o site ao servidor
 1. Siga as intruções do <a href="https://github.com/br-gabriel/todoPostgres-backend">todoPostgres-backend</a> para configurar e rodar o server na sua máquina.
 
+#### Variáveis de ambiente
+Para a aplicação funcionar é preciso criar o arquivo `.env`, na raiz do projeto, e adicionar a seguinte variável, com o endereço em que o backend está rodando.
+```
+REACT_APP_API_URL=http://localhost:3232
+```
+
 ### Rodando o projeto
 Após ter todas as dependências instaladas e as variáveis de ambiente definidas, você pode rodar a aplicação com o seguinte comando:
 ```
