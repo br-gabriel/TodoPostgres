@@ -55,7 +55,7 @@ $ npm install
 #### Variáveis de ambiente
 Para a aplicação funcionar é preciso criar o arquivo `.env`, na raiz do projeto, e adicionar a seguinte variável, com o endereço em que o backend está rodando.
 ```
-REACT_APP_API_URL=http://localhost:3232
+REACT_APP_API_URL="http://localhost:3232"
 ```
 
 ### Rodando o projeto
