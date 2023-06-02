@@ -33,20 +33,20 @@ Para rodar o projeto em modo de desenvolvimento será necessário ter o servidor
 ### Instalação
 <strong>Clonar o repositório</strong>
 ```
-$ git clone https://github.com/br-gabriel/todoPostgres-frontend
+git clone https://github.com/br-gabriel/todoPostgres-frontend
 
-$ cd todoPostgres-frontend
+cd todoPostgres-frontend
 ```
 
 <strong>Instalação das dependências</strong>
 ```
-$ yarn
+yarn
 ```
 
 ou
 
 ```
-$ npm install
+npm install
 ```
 
 ### Conectando o site ao servidor
@@ -61,11 +61,11 @@ REACT_APP_API_URL="http://localhost:3232"
 ### Rodando o projeto
 Após ter todas as dependências instaladas e as variáveis de ambiente definidas, você pode rodar a aplicação com o seguinte comando:
 ```
-$ yarn dev
+yarn dev
 ```
 
 ou 
 
 ```
-$ npm run dev
+npm run dev
 ```
