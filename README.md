@@ -34,7 +34,8 @@ Para rodar o projeto em modo de desenvolvimento será necessário ter o servidor
 <strong>Clonar o repositório</strong>
 ```
 git clone https://github.com/br-gabriel/todoPostgres-frontend
-
+```
+```
 cd todoPostgres-frontend
 ```
 
