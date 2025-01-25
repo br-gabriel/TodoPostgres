@@ -19,7 +19,7 @@ export function SignIn() {
             await api.post("/user/signin", {
                 email: email,
                 password: password
-            }, { withCredentials: true });
+            });
 
             login();
             

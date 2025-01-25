@@ -24,7 +24,7 @@ export function EditTaskModal({ isOpen, onRequestClose, todoSelected, OldTitle }
             await api.put(`/user/todos`, {
                 id: todoSelected.id,
                 name: newTodoValue
-            }, { withCredentials: true });
+            });
 
             getTodos();
         } catch {

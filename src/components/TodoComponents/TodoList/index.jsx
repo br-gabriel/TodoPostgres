@@ -15,7 +15,7 @@ export function TodoList() {
 
     async function deleteTodo(todo) {
         try {
-            await api.delete(`/user/todos/${todo.id}`, { withCredentials: true });
+            await api.delete(`/user/todos/${todo.id}`);
             getTodos();
         } catch {
             logout();
@@ -27,7 +27,7 @@ export function TodoList() {
             await api.put(`/user/todos`, {
                 id: todo.id,
                 status: !todo.status
-            }, { withCredentials: true });
+            });
             
             getTodos();
         } catch {

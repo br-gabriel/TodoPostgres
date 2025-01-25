@@ -8,7 +8,7 @@ export function Header() {
 
     async function handleSignOut() {
         try {
-            await api.get("/user/signout", { withCredentials: true });
+            await api.get("/user/signout");
             logout();
         } catch {
             console.log("erro");

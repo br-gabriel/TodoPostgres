@@ -21,7 +21,7 @@ export function TodoListHeader() {
         try {
             await api.post(`/user/todos`, {
                 name: inputValue,
-            }, { withCredentials: true });
+            });
             
             getTodos();
         } catch {
