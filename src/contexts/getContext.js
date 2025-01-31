@@ -7,8 +7,12 @@ export function GetContextProvider({children}) {
     const [todos, setTodos] = useState([]);
 
     async function getTodos() {
-        const response = await api.get(`/user/todos`);
-        setTodos(response.data);
+        try {
+            const response = await api.get(`/user/todos`);
+            setTodos(response.data);
+        } catch (error) {
+            console.error('Error fetching todos:', error);
+        }
     };
 
     useEffect(() => {
