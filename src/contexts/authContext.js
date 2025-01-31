@@ -5,28 +5,28 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
     const navigate = useNavigate();
-    const [auth, setAuth] = useState();
+    const [auth, setAuth] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const recoveredAuth = localStorage.getItem("isAuth");
+        const token = localStorage.getItem("token");
         
-        if(recoveredAuth) {
-            setAuth(JSON.parse(recoveredAuth));
+        if(token) {
+            setAuth(token);
         };
 
         setLoading(false);
     }, []);
 
-    async function login() {
-        await localStorage.setItem("isAuth", "true");
-        await setAuth(localStorage.getItem("isAuth"));
+    async function login(token) {
+        await localStorage.setItem("token", token);
+        await setAuth(token);
 
         navigate("/", { replace: true });
     };
 
     async function logout() {
-        await localStorage.removeItem("isAuth");
+        await localStorage.removeItem("token");
         await setAuth(null);
 
         navigate("/signin", { replace: true });
