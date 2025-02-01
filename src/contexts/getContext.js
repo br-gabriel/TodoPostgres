@@ -7,8 +7,13 @@ export function GetContextProvider({children}) {
     const [todos, setTodos] = useState([]);
 
     async function getTodos() {
-        const response = await api.get(`/user/todos`);
-        setTodos(response.data);
+        try {
+            const response = await api.get(`/user/todos`);
+            console.log("Response:", response);
+            setTodos(response.data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     useEffect(() => {
