@@ -1,40 +1,40 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-    const navigate = useNavigate();
-    const [auth, setAuth] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [auth, setAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        
-        if(token) {
-            setAuth(token);
-        };
+  useEffect(() => {
+    const token = Cookies.get("access_token");
 
-        setLoading(false);
-    }, []);
+    if (token) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
 
-    async function login(token) {
-        await localStorage.setItem("token", token);
-        await setAuth(token);
+    setLoading(false);
+  }, []);
 
-        navigate("/", { replace: true });
-    };
+  function login() {
+    setAuth(true);
+    navigate("/", { replace: true });
+  }
 
-    async function logout() {
-        await localStorage.removeItem("token");
-        await setAuth(null);
+  function logout() {
+    Cookies.remove("access_token");
+    setAuth(false);
+    navigate("/signin", { replace: true });
+  }
 
-        navigate("/signin", { replace: true });
-    };
-
-    return (
-        <AuthContext.Provider value={{auth, login, logout, loading}}>
-            { children }
-        </AuthContext.Provider>
-    );
-};
+  return (
+    <AuthContext.Provider value={{ auth, login, logout, loading }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
