@@ -7,7 +7,7 @@ export function GetContextProvider({children}) {
     const [todos, setTodos] = useState([]);
 
     async function getTodos() {
-        const response = await api.get(`/user/todos`);
+        const response = await api.get(`/user/todos`, {withCredentials: true});
         setTodos(response.data);
     };
 
